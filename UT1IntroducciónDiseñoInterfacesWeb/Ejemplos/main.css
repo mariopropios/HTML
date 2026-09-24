@@ -1,0 +1,41 @@
+/* Prueba básica de colores */
+p{
+  color: rgb(95, 118, 47);  
+}
+
+h1{
+    background-color: rgba(116, 183, 166, 0.591);
+}
+
+ul{
+    background-color: rgb(139, 168, 168);
+}
+
+li:nth-child(1){
+    color: rgb(141, 220, 154);
+}
+li:nth-child(2){
+    color: rgb(141, 220, 210);
+}
+li:nth-child(3){
+    color: rgb(219, 220, 141);
+    background-color: rgba(107, 163, 144, 0.521);
+}
+li:nth-child(4){
+    color: rgb(220, 183, 141);
+}
+/* etiqueta !important rompe la cascada */
+li:nth-child(1){
+    color: rgba(80, 49, 253, 0.621) !important;
+}
+
+/* Selector id empieza por # */
+#titulo_principal{
+    color: darkslateblue;
+    background-color: lavender;
+    border: 3px solid darkslateblue;
+    text-align: center;
+    border-radius: 30px 5px;
+    padding: 1.5%; /* añade espacio entre el texto y su contenedor */
+    font-style: italic;
+}
