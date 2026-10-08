@@ -1,0 +1,32 @@
+.contenedor{
+    width: 600px;
+    border: 3px solid black;
+    margin-bottom: 40px;
+}
+
+.fila{
+    display: flex;
+}
+
+.columna{
+    padding: 16px;
+    /*flex-shrink: 0; Sirve para que un elemento flexible no debe encogerse */
+}
+
+.lateral{
+    width: 30%;
+    background-color: lavender;
+}
+
+.principal{
+    width: 70%;
+    background-color: lightsalmon;
+}
+
+.fila-a .columna{
+    box-sizing: content-box;
+}
+
+.fila-b .columna{
+    box-sizing: border-box;
+}
