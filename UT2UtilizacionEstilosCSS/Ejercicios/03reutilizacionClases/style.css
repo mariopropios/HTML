@@ -1,0 +1,27 @@
+/* --- Estilos anteriores --- */
+#titulo-seccion {
+  color: teal;
+}
+
+.producto {
+  color: #2b6cb0;
+}
+
+li.producto:first-child {
+  background-color: rgb(226, 232, 240);
+}
+
+.tarjeta {
+  border: 1px solid #cbd5e0;
+  padding: 12px 20px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+}
+
+/* --- Nuevos estilos para el Ejercicio 3 (.agotado) --- */
+
+.agotado {
+  color: #718096;          
+  border-color: #a0aec0;   
+  text-decoration: line-through;
+}

@@ -1,0 +1,19 @@
+/* 1. Regla para lista */
+.li {
+  color: black;
+}
+
+/* 2. Regla para productos normales */
+.producto {
+  color: darkgreen;
+}
+
+/* 3. Regla específica para productos agotados (gana por tener dos clases unidas: 0,2,0) */
+.producto.agotado {
+  color: red;
+}
+
+/* 4. Regla general para cualquier elemento agotado (peso: 0,1,0) */
+.agotado {
+  color: gray;
+}

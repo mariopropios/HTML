@@ -1,0 +1,14 @@
+/* 1. El #titulo-seccion con color por nombre */
+#titulo-seccion {
+  color: teal;
+}
+
+/* 2. Todos los .producto con color en HEX */
+.producto {
+  color: #2b6cb0; /* Un tono azulado, puedes cambiarlo por el HEX que prefieras */
+}
+
+/* 3. El primer <li> con clase .producto con fondo en RGB */
+li.producto:first-child {
+  background-color: rgb(226, 232, 240); /* Un gris claro suave */
+}

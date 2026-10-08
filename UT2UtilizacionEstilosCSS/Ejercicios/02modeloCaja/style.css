@@ -1,0 +1,28 @@
+/* Estilos anteriores de base */
+#titulo-seccion {
+  color: teal;
+}
+
+.producto {
+  color: #2b6cb0;
+}
+
+li.producto:first-child {
+  background-color: rgb(226, 232, 240);
+}
+
+/* --- Nuevos estilos para el Ejercicio 2 (Modelo de caja) --- */
+
+.tarjeta {
+  /* 1. Borde con notación abreviada (ancho + estilo + color) */
+  border: 1px solid #cbd5e0;
+
+  /* 2. Padding con 2 valores: 1º vertical (arriba/abajo), 2º horizontal (izq/der) */
+  padding: 12px 20px;
+
+  /* 3. Margen inferior para separar las tarjetas */
+  margin-bottom: 16px;
+
+  /* 4. Bordes redondeados */
+  border-radius: 8px;
+}
