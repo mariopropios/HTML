@@ -1,0 +1,22 @@
+.regla{
+    width: 200px;
+    height: 10px;
+    background-color: black;
+    margin-bottom: 20px; 
+}
+
+.caja{
+    width: 200px;
+    padding: 20px;
+    border: 5px solid darkslateblue;
+    background-color: lavender;
+    margin-bottom: 20px;
+}
+
+.caja-a{
+    box-sizing: content-box;
+}
+
+.caja-b{
+    box-sizing: border-box;
+}
