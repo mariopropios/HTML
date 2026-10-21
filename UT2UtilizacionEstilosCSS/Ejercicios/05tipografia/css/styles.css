@@ -1,0 +1,60 @@
+/* la fuente se define una vez en body y se hereda */
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Jerarquía */
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+header {
+  text-align: center;
+}
+
+.subtitulo {
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* Detalles */
+.precio {
+  font-weight: 700;
+  text-align: right;
+}
+
+.descripcion {
+  font-size: 0.9em;
+}
+
+.aviso {
+  font-size: 0.85rem;
+  font-style: italic;
+  text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus-visible {
+  text-decoration: underline;
+}
