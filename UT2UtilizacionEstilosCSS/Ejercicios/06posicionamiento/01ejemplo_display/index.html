@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplos de posicionamiento en CSS</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body id="inicio">
+
+  <!-- Barra fija: ver ejemplo 4 -->
+  <header class="barra">
+    <p class="barra__titulo">Posicionamiento en CSS</p>
+    <nav class="barra__nav" aria-label="Ejemplos">
+      <a href="#display">display</a>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+
+    <p class="intro">Cada sección es un ejemplo independiente. La barra superior y el botón «Arriba» de la esquina
+      también son ejemplos: los dos usan <code>position: fixed</code>. Abre <code>css/styles.css</code> y prueba las
+      propuestas marcadas como «Experimenta».</p>
+
+    <!-- EJEMPLO 1 · Flujo normal y display -->
+    <section id="display" class="ejemplo">
+      <h2>1. Flujo normal y display</h2>
+
+      <h3>Menú con enlaces inline-block</h3>
+      <ul class="menu">
+        <li><a href="#display">Inicio</a></li>
+        <li><a href="#display">Rutas</a></li>
+        <li><a href="#display">Material</a></li>
+        <li><a href="#display">Contacto</a></li>
+      </ul>
+
+      <h3>Ocultar: display: none frente a visibility: hidden</h3>
+      <div class="ocultar">
+        <div class="ocultar__col">
+          <p class="caja">A</p>
+          <p class="caja oculta-none">B</p>
+          <p class="caja">C</p>
+          <p class="pie">display: none</p>
+        </div>
+        <div class="ocultar__col">
+          <p class="caja">A</p>
+          <p class="caja oculta-hidden">B</p>
+          <p class="caja">C</p>
+          <p class="pie">visibility: hidden</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Botón fijo: ver ejemplo 4 -->
+  <a class="arriba" href="#inicio">Arriba</a>
+</body>
+
+</html>
