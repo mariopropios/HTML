@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplos de posicionamiento en CSS</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body id="inicio">
+
+  <!-- Barra fija: ver ejemplo 4 -->
+  <header class="barra">
+    <p class="barra__titulo">Posicionamiento en CSS</p>
+    <nav class="barra__nav" aria-label="Ejemplos">
+      <a href="#display">display</a>
+      <a href="#relative">relative</a>
+      <a href="#absolute">absolute</a>
+      <a href="#fixed">fixed</a>
+      <a href="#sticky">sticky</a>
+      <a href="#zindex">z-index</a>
+      <a href="#overflow">overflow</a>
+      <a href="#float">float</a>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+
+    <p class="intro">Cada sección es un ejemplo independiente. La barra superior y el botón «Arriba» de la esquina también son ejemplos: los dos usan <code>position: fixed</code>. Abre <code>css/styles.css</code> y prueba las propuestas marcadas como «Experimenta».</p>
+
+    <!-- EJEMPLO 1 · Flujo normal y display -->
+    <section id="display" class="ejemplo">
+      <h2>1. Flujo normal y display</h2>
+
+      <h3>Menú con enlaces inline-block</h3>
+      <ul class="menu">
+        <li><a href="#display">Inicio</a></li>
+        <li><a href="#display">Rutas</a></li>
+        <li><a href="#display">Material</a></li>
+        <li><a href="#display">Contacto</a></li>
+      </ul>
+
+      <h3>Ocultar: display: none frente a visibility: hidden</h3>
+      <div class="ocultar">
+        <div class="ocultar__col">
+          <p class="caja">A</p>
+          <p class="caja oculta-none">B</p>
+          <p class="caja">C</p>
+          <p class="pie">display: none</p>
+        </div>
+        <div class="ocultar__col">
+          <p class="caja">A</p>
+          <p class="caja oculta-hidden">B</p>
+          <p class="caja">C</p>
+          <p class="pie">visibility: hidden</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EJEMPLO 2 · position: relative -->
+    <section id="relative" class="ejemplo">
+      <h2>2. position: relative</h2>
+      <p>La caja B se desplaza 20px hacia abajo y 40px a la derecha. El recuadro discontinuo marca el hueco que sigue ocupando.</p>
+      <div class="pila">
+        <p class="caja">A</p>
+        <div class="hueco">
+          <p class="caja desplazada">B · relative</p>
+        </div>
+        <p class="caja">C</p>
+      </div>
+    </section>
+
+    <!-- EJEMPLO 3 · Padre relative + hijo absolute -->
+    <section id="absolute" class="ejemplo">
+      <h2>3. Padre relative, hijo absolute</h2>
+      <p>La insignia se coloca en la esquina de cada tarjeta porque la tarjeta tiene <code>position: relative</code>.</p>
+
+      <article class="tarjeta">
+        <p class="insignia">Oferta</p>
+        <h3>Zapatillas de trail</h3>
+        <p>Suela de tacos para terreno suelto.</p>
+        <p class="tarjeta__precio">89 €</p>
+      </article>
+
+      <article class="tarjeta">
+        <p class="insignia insignia--nuevo">Nuevo</p>
+        <h3>Mochila de 20 litros</h3>
+        <p>Ligera, con bolsa de hidratación.</p>
+        <p class="tarjeta__precio">54 €</p>
+      </article>
+
+      <h3>Capa sobre una imagen con inset: 0</h3>
+      <figure class="foto">
+        <img src="img/montana.svg" alt="Ilustración de montañas al atardecer" width="600" height="300">
+        <figcaption class="foto__capa">Sierra de Guadarrama</figcaption>
+      </figure>
+    </section>
+
+    <!-- EJEMPLO 4 · position: fixed -->
+    <section id="fixed" class="ejemplo">
+      <h2>4. position: fixed</h2>
+      <p>Haz scroll por la página: la barra superior y el botón «Arriba» no se mueven, porque se colocan respecto a la ventana.</p>
+      <p>Como la barra sale del flujo, taparía el principio de la página. Por eso <code>body</code> tiene un <code>padding-top</code> igual a su altura.</p>
+    </section>
+
+    <!-- EJEMPLO 5 · position: sticky (y overflow: auto) -->
+    <section id="sticky" class="ejemplo">
+      <h2>5. position: sticky</h2>
+      <p>Desplázate dentro del recuadro: el nombre de cada día se queda pegado arriba hasta que termina su bloque.</p>
+      <div class="agenda">
+        <div class="dia">
+          <h3>Lunes</h3>
+          <ul>
+            <li>8:30 · Diseño de interfaces</li>
+            <li>10:20 · Desarrollo en cliente</li>
+            <li>12:30 · Despliegue</li>
+            <li>14:20 · Tutoría</li>
+          </ul>
+        </div>
+        <div class="dia">
+          <h3>Martes</h3>
+          <ul>
+            <li>8:30 · Desarrollo en servidor</li>
+            <li>10:20 · Diseño de interfaces</li>
+            <li>12:30 · Empresa e iniciativa</li>
+            <li>14:20 · Inglés técnico</li>
+          </ul>
+        </div>
+        <div class="dia">
+          <h3>Miércoles</h3>
+          <ul>
+            <li>8:30 · Desarrollo en cliente</li>
+            <li>10:20 · Proyecto</li>
+            <li>12:30 · Desarrollo en servidor</li>
+            <li>14:20 · Despliegue</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EJEMPLO 6 · z-index y contexto de apilamiento -->
+    <section id="zindex" class="ejemplo">
+      <h2>6. z-index</h2>
+
+      <h3>Tres capas superpuestas</h3>
+      <div class="capas">
+        <div class="capa capa--1">z-index: 1</div>
+        <div class="capa capa--2">z-index: 3</div>
+        <div class="capa capa--3">z-index: 2</div>
+      </div>
+
+      <h3>¿Por qué 999 no gana?</h3>
+      <div class="contexto">
+        <div class="padre">
+          .padre · z-index: 1
+          <div class="hijo">.hijo · z-index: 999</div>
+        </div>
+        <div class="vecino">.vecino · z-index: 2</div>
+      </div>
+
+      <h3>Ventana modal</h3>
+      <p>Una pantalla simulada: el fondo oscuro cubre todo con <code>inset: 0</code> y la ventana queda encima por su <code>z-index</code>.</p>
+      <div class="pantalla">
+        <p>Contenido de la página que queda detrás de la ventana.</p>
+        <p>Más contenido de la página.</p>
+        <div class="modal__fondo"></div>
+        <div class="modal" role="dialog" aria-labelledby="modal-titulo">
+          <h4 id="modal-titulo">¿Guardar los cambios?</h4>
+          <p>Si sales sin guardar, perderás lo que has escrito.</p>
+          <button type="button">Guardar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EJEMPLO 7 · overflow -->
+    <section id="overflow" class="ejemplo">
+      <h2>7. overflow</h2>
+      <p>Las cuatro cajas tienen <code>max-height: 6rem</code> y el mismo texto, que no cabe.</p>
+      <div class="desbordes">
+        <div class="desborde desborde--visible">
+          <p class="desborde__valor">visible</p>
+          <p>La mochila debe pesar menos del 10 % de tu peso. Lleva agua, algo de comida, chubasquero, gorra, crema solar, mapa y el móvil cargado. En otoño, añade un frontal por si anochece antes de lo previsto.</p>
+        </div>
+        <div class="desborde desborde--hidden">
+          <p class="desborde__valor">hidden</p>
+          <p>La mochila debe pesar menos del 10 % de tu peso. Lleva agua, algo de comida, chubasquero, gorra, crema solar, mapa y el móvil cargado. En otoño, añade un frontal por si anochece antes de lo previsto.</p>
+        </div>
+        <div class="desborde desborde--scroll">
+          <p class="desborde__valor">scroll</p>
+          <p>La mochila debe pesar menos del 10 % de tu peso. Lleva agua, algo de comida, chubasquero, gorra, crema solar, mapa y el móvil cargado. En otoño, añade un frontal por si anochece antes de lo previsto.</p>
+        </div>
+        <div class="desborde desborde--auto">
+          <p class="desborde__valor">auto</p>
+          <p>La mochila debe pesar menos del 10 % de tu peso. Lleva agua, algo de comida, chubasquero, gorra, crema solar, mapa y el móvil cargado. En otoño, añade un frontal por si anochece antes de lo previsto.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EJEMPLO 8 · float y clear -->
+    <section id="float" class="ejemplo">
+      <h2>8. float y clear</h2>
+      <article class="noticia">
+        <img class="noticia__foto" src="img/montana.svg" alt="Ilustración de montañas" width="200" height="100">
+        <p>El refugio de Peñalara reabre este fin de semana tras las obras de mejora. Los guardas recuerdan que en otoño anochece antes de las ocho y recomiendan iniciar la bajada con tiempo.</p>
+        <p>Las reservas para dormir se hacen por teléfono y el refugio ofrece cena caliente a quien la pida con un día de antelación.</p>
+        <p class="noticia__nota">Esta nota usa clear: both y por eso empieza debajo de la imagen.</p>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- Botón fijo: ver ejemplo 4 -->
+  <a class="arriba" href="#inicio">Arriba</a>
+</body>
+</html>

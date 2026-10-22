@@ -1,0 +1,504 @@
+/* =========================================================
+   EJEMPLOS DE POSICIONAMIENTO
+   Conceptos: flujo normal, display, position (static,
+   relative, absolute, fixed, sticky), top/right/bottom/left,
+   inset, z-index, contexto de apilamiento, overflow, float
+
+   Cada bloque lleva sus propuestas de «Experimenta».
+   ========================================================= */
+
+/* ---------- Base de la página ---------- */
+body {
+  margin: 0;
+  padding-top: 4.5rem; /* deja sitio a la barra fija (ejemplo 4) */
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  color: #1f2433;
+  background-color: #f3f4f1;
+}
+
+.contenedor {
+  width: 92%;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding-bottom: 6rem;
+}
+
+h2 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+}
+
+h3 {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+code {
+  font-family: "Courier New", monospace;
+  font-size: 0.95em;
+}
+
+.intro {
+  margin: 2rem 0;
+}
+
+.ejemplo {
+  scroll-margin-top: 5.5rem; /* al saltar con el menú, que no quede bajo la barra fija */
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  border: 1px solid #d5dae3;
+  background-color: #ffffff;
+}
+
+/* Caja genérica para los diagramas A / B / C */
+.caja {
+  margin: 0 0 0.5rem;
+  padding: 0.5rem;
+  border: 2px solid #5b6475;
+  background-color: #ffffff;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* =========================================================
+   1 · FLUJO NORMAL Y DISPLAY
+   Experimenta:
+   1. En .menu li, quita display: inline-block: los elementos
+      de la lista vuelven a apilarse (son de bloque).
+   2. En .menu a, cambia inline-block por inline: el padding
+      vertical se pinta pero ya no ocupa espacio.
+   3. Compara las dos columnas de «Ocultar»: en una, C sube;
+      en la otra, se queda en su sitio.
+   ========================================================= */
+.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu li {
+  display: inline-block; /* en línea, uno al lado del otro */
+}
+
+.menu a {
+  display: inline-block; /* en línea, pero acepta padding y tamaño */
+  padding: 0.5rem 1rem;
+  border: 2px solid #2e86ab;
+  color: #1f5f7a;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Hacemos las dos columnas con inline-block, sin Flexbox */
+.ocultar__col {
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+  margin-right: 4%;
+}
+
+.oculta-none {
+  display: none; /* sale del flujo: C sube */
+}
+
+.oculta-hidden {
+  visibility: hidden; /* invisible, pero conserva su hueco */
+}
+
+.pie {
+  margin: 0;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  color: #5b6475;
+}
+
+/* =========================================================
+   2 · POSITION: RELATIVE
+   Experimenta:
+   1. Cambia top: 20px por top: -20px.
+   2. Cambia left por right: ¿hacia dónde se mueve ahora?
+   3. Quita position: relative: top y left dejan de funcionar
+      porque el elemento vuelve a ser static.
+   ========================================================= */
+.hueco {
+  margin-bottom: 0.5rem;
+  border: 2px dashed #8a93a6; /* marca el hueco original de B */
+}
+
+.desplazada {
+  position: relative;
+  top: 20px;
+  left: 40px;
+  margin: 0;
+  border-color: #e07a2f;
+  background-color: #fbe9db;
+}
+
+/* =========================================================
+   3 · PADRE RELATIVE, HIJO ABSOLUTE
+   Experimenta:
+   1. En .tarjeta, quita position: relative. ¿Dónde aparecen
+      ahora las insignias? ¿Respecto a qué se colocan?
+   2. Cambia top/right por bottom/left en .insignia.
+   3. En .foto__capa, cambia inset: 0 por inset: auto 0 0 0
+      (solo una franja en la parte de abajo).
+   ========================================================= */
+.tarjeta {
+  position: relative; /* referencia para .insignia */
+  margin-bottom: 1rem;
+  padding: 1.25rem;
+  border: 2px solid #1f2433;
+}
+
+.tarjeta h3 {
+  margin-top: 0;
+}
+
+.tarjeta p {
+  margin: 0;
+}
+
+.tarjeta__precio {
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.insignia {
+  position: absolute; /* sale del flujo */
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  background-color: #b84d0f;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.insignia--nuevo {
+  background-color: #1f5f7a;
+}
+
+/* Capa que cubre toda la imagen */
+.foto {
+  position: relative;
+  margin: 0;
+}
+
+.foto img {
+  display: block; /* evita el hueco inferior de los elementos inline */
+  width: 100%;
+  height: auto;
+}
+
+.foto__capa {
+  position: absolute;
+  inset: 0; /* top, right, bottom y left a 0: cubre la foto */
+  padding: 1rem;
+  background-color: rgba(31, 36, 51, 0.45);
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* =========================================================
+   4 · POSITION: FIXED (barra superior y botón «Arriba»)
+   Experimenta:
+   1. Quita padding-top de body (arriba del todo): la barra
+      tapa el principio de la página.
+   2. Cambia position: fixed por absolute en .barra y haz
+      scroll: ahora se va con la página.
+   3. Mueve el botón .arriba a la esquina inferior izquierda.
+   ========================================================= */
+.barra {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100; /* por encima de todo el contenido */
+  box-sizing: border-box;
+  width: 100%;
+  height: 4.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #1f2433;
+  color: #ffffff;
+}
+
+.barra__titulo {
+  margin: 0 0 0.25rem;
+  font-weight: bold;
+}
+
+/* En pantallas estrechas los enlaces no caben: en lugar de
+   saltar de línea (la barra tiene altura fija), se desplazan
+   en horizontal. Es overflow aplicado a un caso real (ej. 7). */
+.barra__nav {
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.barra__nav a {
+  display: inline-block;
+  margin-right: 0.75rem;
+  color: #c9e7f5;
+  font-size: 0.9rem;
+}
+
+.arriba {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background-color: #b84d0f;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Foco visible para quien navega con teclado */
+.barra__nav a:focus,
+.arriba:focus,
+.menu a:focus {
+  outline: 3px solid #f6d55c;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   5 · POSITION: STICKY
+   Experimenta:
+   1. Quita top: 0 en .dia h3: deja de pegarse.
+   2. Cambia top: 0 por top: 1rem.
+   3. Quita overflow: auto y height de .agenda: ahora el
+      scroll es el de la página. ¿Sigue funcionando? ¿Qué
+      problema aparece con la barra fija?
+   ========================================================= */
+.agenda {
+  height: 14rem;
+  overflow: auto; /* el scroll ocurre dentro de la caja */
+  border: 2px solid #1f2433;
+}
+
+.dia h3 {
+  position: sticky;
+  top: 0; /* umbral: se pega al borde superior */
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background-color: #2e86ab;
+  color: #ffffff;
+}
+
+.dia ul {
+  margin: 0;
+  padding: 0.5rem 1rem 1rem 2rem;
+}
+
+.dia li {
+  padding: 0.35rem 0;
+}
+
+/* =========================================================
+   6 · Z-INDEX
+   Experimenta:
+   1. Quita todos los z-index de .capa--1, --2 y --3: queda
+      encima la última del HTML.
+   2. Da a .hijo un z-index de 9999: sigue debajo del vecino.
+   3. Cambia el z-index de .padre a 3: ahora padre e hijo
+      quedan encima del vecino.
+   4. En .modal, quita position: absolute: z-index deja de
+      tener efecto y la ventana se mete en el flujo.
+   ========================================================= */
+.capas {
+  position: relative;
+  height: 12rem;
+}
+
+.capa {
+  position: absolute;
+  width: 45%;
+  height: 7rem;
+  padding: 0.5rem;
+  border: 2px solid #1f2433;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+}
+
+.capa--1 {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: #dceef5;
+}
+
+.capa--2 {
+  top: 2rem;
+  left: 20%;
+  z-index: 3;
+  background-color: #fbe9db;
+}
+
+.capa--3 {
+  top: 4rem;
+  left: 40%;
+  z-index: 2;
+  background-color: #ffffff;
+}
+
+/* Contexto de apilamiento */
+.contexto {
+  position: relative;
+  height: 11rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.padre {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* crea un contexto de apilamiento */
+  width: 50%;
+  height: 9rem;
+  padding: 0.5rem;
+  border: 2px solid #2e86ab;
+  background-color: #dceef5;
+}
+
+.hijo {
+  position: absolute;
+  top: 2.5rem;
+  left: 1.5rem;
+  z-index: 999; /* solo compite dentro de .padre */
+  width: 70%;
+  height: 4rem;
+  padding: 0.5rem;
+  border: 2px solid #e07a2f;
+  background-color: #fbe9db;
+}
+
+.vecino {
+  position: absolute;
+  top: 4.5rem;
+  left: 35%;
+  z-index: 2; /* compite con .padre: 2 > 1 */
+  width: 50%;
+  height: 6rem;
+  padding: 0.5rem;
+  background-color: #2c3347;
+  color: #ffffff;
+}
+
+/* Ventana modal dentro de una "pantalla" simulada */
+.pantalla {
+  position: relative; /* referencia para el fondo y la ventana */
+  height: 16rem;
+  padding: 1rem;
+  border: 2px solid #1f2433;
+  background-color: #eef1f6;
+}
+
+.modal__fondo {
+  position: absolute;
+  inset: 0; /* cubre toda la pantalla */
+  z-index: 10;
+  background-color: rgba(31, 36, 51, 0.6);
+}
+
+.modal {
+  position: absolute;
+  top: 2.5rem;
+  left: 10%;
+  z-index: 20; /* por encima del fondo */
+  box-sizing: border-box;
+  width: 80%;
+  padding: 1.25rem;
+  background-color: #ffffff;
+}
+
+.modal h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.modal button {
+  padding: 0.5rem 1rem;
+  border: 0;
+  background-color: #1f5f7a;
+  color: #ffffff;
+  font: inherit;
+  font-weight: bold;
+}
+
+/* =========================================================
+   7 · OVERFLOW
+   Experimenta:
+   1. Cambia max-height por height en .desborde: ¿cambia algo?
+   2. Quita max-height: ya no hay desbordamiento posible.
+   3. Prueba overflow-x: hidden y overflow-y: auto por separado.
+   ========================================================= */
+.desborde {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  width: 46%;
+  max-height: 6rem; /* sin un tamaño limitado no hay desborde */
+  margin: 0 2% 5rem 0;
+  padding: 0.5rem;
+  border: 2px solid #1f2433;
+  background-color: #dceef5;
+  font-size: 0.9rem;
+}
+
+.desborde p {
+  margin: 0;
+}
+
+.desborde__valor {
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+}
+
+.desborde--visible {
+  overflow: visible;
+} /* valor por defecto */
+.desborde--hidden {
+  overflow: hidden;
+}
+.desborde--scroll {
+  overflow: scroll;
+}
+.desborde--auto {
+  overflow: auto;
+}
+
+/* =========================================================
+   8 · FLOAT Y CLEAR
+   Experimenta:
+   1. Cambia float: left por float: right.
+   2. Quita clear: both de la nota: el texto sube junto a la
+      imagen si cabe.
+   3. Quita el margen de la imagen: el texto se pega a ella.
+   ========================================================= */
+.noticia {
+  display: flow-root; /* el padre envuelve también al flotante */
+}
+
+.noticia__foto {
+  float: left;
+  width: 40%;
+  height: auto;
+  margin: 0 1rem 0.5rem 0;
+}
+
+.noticia p {
+  margin: 0 0 0.75rem;
+}
+
+.noticia__nota {
+  clear: both; /* empieza debajo de los flotantes */
+  padding: 0.5rem 0.75rem;
+  border-left: 4px solid #e07a2f;
+  background-color: #fbe9db;
+}
