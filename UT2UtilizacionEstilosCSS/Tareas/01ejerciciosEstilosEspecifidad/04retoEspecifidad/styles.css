@@ -1,0 +1,53 @@
+#titulo-seccion {
+  color: teal;
+}
+
+.producto {
+  color: #1e4620;
+}
+
+.producto:first-child {
+  background-color: rgb(255, 244, 214);
+}
+
+.tarjeta {
+  border: 2px solid #6b7280;
+  padding: 10px 16px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+}
+
+.agotado {
+  color: gray;
+  border-color: gray;
+  text-decoration: line-through;
+}
+
+/*
+li { color: black; }
+.producto { color: darkgreen; }
+#titulo-seccion ~ ul li.agotado { color: red; }
+.agotado { color: gray; }
+*/
+
+/*
+li {
+  color: black;
+}
+
+.producto {
+  color: darkgreen;
+}
+
+.tarjeta.agotado {
+  color: red;
+}
+
+.agotado {
+  color: gray;
+}
+*/
+
+.tarjeta.agotado {
+  color: red;
+}

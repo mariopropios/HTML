@@ -3,14 +3,14 @@
   --primario: #0d47a1;
   --acento: #c62828;
 }
- 
+
 /* Tipografia ... */
 body {
   font-family: Inter, system-ui, sans-serif;
   background: #f5f7fb;
   color: #222;
 }
- 
+
 .cabecera {
   border-bottom: 2px solid var(--primario);
 }
@@ -23,7 +23,7 @@ body {
 .slogan {
   color: #607d8b;
 }
- 
+
 /* Componentes */
 .tarjeta {
   background: #fff;

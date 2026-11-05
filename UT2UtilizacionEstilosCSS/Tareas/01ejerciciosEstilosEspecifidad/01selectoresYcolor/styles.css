@@ -1,0 +1,11 @@
+#titulo-seccion {
+  color: teal;
+}
+
+.producto {
+  color: #1e4620;
+}
+
+.producto:first-child {
+  background-color: rgb(255, 244, 214);
+}
